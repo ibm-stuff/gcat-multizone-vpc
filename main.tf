@@ -112,7 +112,7 @@ resource ibm_is_public_gateway gateway {
 locals {
   # Object to reference gateways
   public_gateways = {
-    for zone in ["zone-1", "zone-2"]:
+    for zone in ["zone-1", "zone-2", "zone-3"]:
     # If gateway is created, set to id, otherwise set to empty string
     zone => contains(keys(local.gateway_object), zone) ? ibm_is_public_gateway.gateway[zone].id : ""
   }
