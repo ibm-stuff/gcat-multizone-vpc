@@ -82,12 +82,12 @@ variable subnets {
         name           = "subnet-a"
         cidr           = "10.10.10.0/24"
         public_gateway = true
-      }
+      },
       {
         name           = "subnet-a1"
         cidr           = "10.10.20.0/24"
         public_gateway = true
-      }
+      },
       {
         name           = "subnet-a3"
         cidr           = "10.10.30.0/24"
