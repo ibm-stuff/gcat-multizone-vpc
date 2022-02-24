@@ -79,8 +79,18 @@ variable subnets {
   default = {
     zone-1 = [
       {
-        name           = "subnet-a"
+        name           = "subnet-mngmt"
         cidr           = "10.10.10.0/24"
+        public_gateway = true
+      }
+      {
+        name           = "subnet-pri"
+        cidr           = "10.10.20.0/24"
+        public_gateway = true
+      }
+      {
+        name           = "subnet-pub"
+        cidr           = "10.10.30.0/24"
         public_gateway = true
       }
     ],
@@ -114,9 +124,9 @@ variable use_public_gateways {
     zone-3 = optional(bool)
   })
   default     = {
-    zone-1 = true
-    zone-2 = true
-    zone-3 = true
+    zone-1 = false
+    zone-2 = false
+    zone-3 = false
   }
 
   validation {
