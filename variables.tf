@@ -70,44 +70,68 @@ variable subnets {
       cidr           = string
       public_gateway = optional(bool)
     }))
+    zone-3 = list(object({
+      name           = string
+      cidr           = string
+      public_gateway = optional(bool)
+    }))
   })
   default = {
     zone-1 = [
       {
-        name           = "subnet-mgmt"
+        name           = "subnet-a"
         cidr           = "10.10.10.0/24"
+        public_gateway = true
+      }
+      {
+        name           = "subnet-a1"
+        cidr           = "10.10.20.0/24"
+        public_gateway = true
+      }
+      {
+        name           = "subnet-a3"
+        cidr           = "10.10.30.0/24"
         public_gateway = true
       }
     ],
     zone-2 = [
       {
-        name           = "subnet-mgmt"
+        name           = "subnet-b"
         cidr           = "10.20.10.0/24"
         public_gateway = true
       }
     ],
+    zone-3 = [
+      {
+        name           = "subnet-c"
+        cidr           = "10.30.10.0/24"
+        public_gateway = true
+      }
+    ]
   }
 
   validation {
-      error_message = "Keys for `subnets` must be in the order `zone-1`, `zone-2`."
-      condition     = keys(var.subnets)[0] == "zone-1" && keys(var.subnets)[1] == "zone-2"
+      error_message = "Keys for `subnets` must be in the order `zone-1`, `zone-2`, `zone-3`."
+      condition     = keys(var.subnets)[0] == "zone-1" && keys(var.subnets)[1] == "zone-2" && keys(var.subnets)[2] == "zone-3"
   }
 }
 
 variable use_public_gateways {
-  description = "Create a public gateway in either of the two zones with `true`."
+  description = "Create a public gateway in any of the three zones with `true`."
   type        = object({
     zone-1 = optional(bool)
     zone-2 = optional(bool)
+    zone-3 = optional(bool)
   })
   default     = {
     zone-1 = false
     zone-2 = false
+    zone-3 = false
   }
 
   validation {
-      error_message = "Keys for `use_public_gateways` must be in the order `zone-1`, `zone-2`."
-      condition     = keys(var.use_public_gateways)[0] == "zone-1" && keys(var.use_public_gateways)[1] == "zone-2"
+      error_message = "Keys for `use_public_gateways` must be in the order `zone-1`, `zone-2`, `zone-3`."
+      condition     = keys(var.use_public_gateways)[0] == "zone-1" && keys(var.use_public_gateways)[1] == "zone-2" && keys(var.use_public_gateways)[2] == "zone-3"
   }
 }
 
