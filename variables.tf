@@ -19,7 +19,7 @@ variable TF_VERSION {
 variable prefix {
     description = "A unique identifier need to provision resources. Must begin with a letter"
     type        = string
-    default     = "gcat-multizone"
+    default     = "2zone-vpc-power"
 
     validation  {
       error_message = "Unique ID must begin and end with a letter and contain only letters, numbers, and - characters."
@@ -30,13 +30,13 @@ variable prefix {
 variable region {
   description = "Region where VPC will be created"
   type        = string
-  default     = "us-south"
+  default     = "eu-gb"
 }
 
 variable resource_group {
     description = "Name of resource group where all infrastructure will be provisioned"
     type        = string
-    default     = "asset-development"
+    default     = "2zone-power-vpc"
 
     validation  {
       error_message = "Unique ID must begin and end with a letter and contain only letters, numbers, and - characters."
