@@ -153,7 +153,7 @@ resource "ibm_is_instance" "vsrx" {
     allow_ip_spoofing = false
   }
 
-  vpc  = "mvp-vpc"
+  vpc  = "r018-99ab97ed-cec9-41d6-a94d-8fa486ff6eab"
   zone = "eu-gb-1"
 
 }
