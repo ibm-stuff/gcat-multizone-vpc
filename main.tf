@@ -145,7 +145,7 @@ resource "ibm_is_instance" "vsrx" {
   name    = "vsrx-zone1"
   image   = "r018-256b93dd-1733-4365-85cc-6c29ba3852ac"
   profile = "bx2-2x8"
-  keys = [ibm_is_ssh_key.vsrx.id]
+  keys = ibm_is_ssh_key.vsrx.id
 
   primary_network_interface {
     subnet = "0787-e9346161-53a8-483e-8919-378469b39065"
