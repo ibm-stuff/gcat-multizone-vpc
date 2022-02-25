@@ -149,7 +149,6 @@ resource "ibm_is_instance" "vsrx" {
   network_interfaces {
     name   = "eth0"
     subnet = "mvp-zone1-mnmgt"
-    security_groups = "triangle-authentic-paparazzi-facility"
     allow_ip_spoofing = false
   }
 
