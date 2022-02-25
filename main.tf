@@ -137,25 +137,24 @@ module subnets {
 ##############################################################################
 
 resource "ibm_is_instance" "vsrx" {
-  name    = {var.vsi_name}-zone1
+  name    = "vsrx-zone1"
   image   = var.image
   profile = var.profile
-  resource_group_id = data.ibm_resource_group.resource_group.id
 
   primary_network_interface {
-    subnet = ibm_is_subnet.example.id
+    subnet = "mvp-zone1-mnmgt"
     allow_ip_spoofing = false
   }
 
   network_interfaces {
     name   = "eth0"
-    subnet = keys(var.subnets)[0]
+    subnet = "mvp-zone1-mnmgt"
     security_groups = "triangle-authentic-paparazzi-facility"
     allow_ip_spoofing = false
   }
 
-  vpc  = "${var.prefix}-vpc"
-  zone = "${var.zone1}"
+  vpc  = "mvp-vpc"
+  zone = "eu-gb-1"
 
 }
 
