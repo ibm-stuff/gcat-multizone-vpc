@@ -143,13 +143,13 @@ resource "ibm_is_instance" "vsrx" {
   keys = ["demo-vpc-key"]
 
   primary_network_interface {
-    subnet = "mvp-zone1-mnmgt"
+    subnet = "0787-e9346161-53a8-483e-8919-378469b39065"
     allow_ip_spoofing = false
   }
 
   network_interfaces {
     name   = "eth0"
-    subnet = "mvp-zone1-mnmgt"
+    subnet = "0787-e9346161-53a8-483e-8919-378469b39065"
     allow_ip_spoofing = false
   }
 
