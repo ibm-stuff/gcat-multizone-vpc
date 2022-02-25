@@ -164,6 +164,7 @@ resource "ibm_is_instance" "vsrx" {
     subnet = "0787-d4f7b8cf-7161-4ae7-be84-8bd20135e4b2"
     allow_ip_spoofing = true
     }
+  ]
 
   vpc  = "r018-99ab97ed-cec9-41d6-a94d-8fa486ff6eab"
   zone = "eu-gb-1"
