@@ -136,23 +136,39 @@ module subnets {
 # VSIs
 ##############################################################################
 
+resource "ibm_is_ssh_key" "vsrx" {
+  name       = "example-ssh"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCKVmnMOlHKcZK8tpt3MP1lqOLAcqcJzhsvJcjscgVERRN7/9484SOBJ3HSKxxNG5JN8owAjy5f9yYwcUg+JaUVuytn5Pv3aeYROHGGg+5G346xaq3DAwX6Y5ykr2fvjObgncQBnuU5KHWCECO/4h8uWuwh/kfniXPVjFToc+gnkqA+3RKpAecZhFXwfalQ9mMuYGFxn+fwn8cYEApsJbsEmb0iJwPiZ5hjFC8wREuiTlhPHDgkBLOiycd20op2nXzDbHfCHInquEe/gYxEitALONxm0swBOwJZwlTDOB7C6y2dzlrtxr1L59m7pCkWI4EtTRLvleehBoj3u7jB4usR"
+}
+
 resource "ibm_is_instance" "vsrx" {
   name    = "vsrx-zone1"
   image   = "r018-256b93dd-1733-4365-85cc-6c29ba3852ac"
   profile = "bx2-2x8"
-  keys = ["demo-vpc-key"]
+  keys = [ibm_is_ssh_key.vsrx.id]
 
   primary_network_interface {
     subnet = "0787-e9346161-53a8-483e-8919-378469b39065"
     allow_ip_spoofing = false
   }
 
-  network_interfaces {
+  network_interfaces = [
+    {
     name   = "eth0"
-    subnet = "0787-e9346161-53a8-483e-8919-378469b39065"
+    subnet = module.subnets.ids[1]
     allow_ip_spoofing = false
-  }
-
+    }
+    {
+    name   = "eth1"
+    subnet = module.subnets.ids[2]
+    allow_ip_spoofing = false
+    }
+    {
+    name   = "eth2"
+    subnet = module.subnets.ids[3]
+    allow_ip_spoofing = false
+    }
+  ]
   vpc  = "r018-99ab97ed-cec9-41d6-a94d-8fa486ff6eab"
   zone = "eu-gb-1"
 
