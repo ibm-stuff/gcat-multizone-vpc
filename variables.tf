@@ -81,41 +81,41 @@ variable subnets {
       {
         name           = "zone1-mnmgt"
         cidr           = "10.10.10.0/24"
-        public_gateway = true
+        public_gateway = false
       },
       {
         name           = "zone1-pri"
         cidr           = "10.10.20.0/24"
-        public_gateway = true
+        public_gateway = false
       },
       {
         name           = "zone1-pub"
         cidr           = "10.10.30.0/24"
-        public_gateway = true
+        public_gateway = false
       }
     ],
     zone-2 = [
       {
         name           = "zone2-redund"
         cidr           = "10.20.10.0/24"
-        public_gateway = true
+        public_gateway = false
       }
     ],
     zone-3 = [
       {
         name           = "zone3-mgmgt"
         cidr           = "10.30.10.0/24"
-        public_gateway = true
+        public_gateway = false
       },
       {
         name           = "zone3-pri"
         cidr           = "10.30.20.0/24"
-        public_gateway = true
+        public_gateway = false
       },
       {
         name           = "zone3-pub"
         cidr           = "10.30.30.0/24"
-        public_gateway = true
+        public_gateway = false
       }
     ]
   }
@@ -343,5 +343,41 @@ variable security_group_rules {
   }
 }
 
+
+##############################################################################
+
+
+##############################################################################
+# VSI Variables
+##############################################################################
+
+variable vsi_name {
+    description = "Name of VSI instance to be provisioned"
+    type        = string
+    default     = "vsrx"
+
+    validation  {
+      error_message = "Unique ID must begin and end with a letter and contain only letters, numbers, and - characters."
+      condition     = can(regex("^([a-z]|[a-z][-a-z0-9]*[a-z0-9])$", var.vsi_name))
+    }
+}
+
+variable image {
+    description = "Name of VSI image to be used"
+    type        = string
+    default     = "r006-fe4460a2-aa88-421a-963a-a84ffa2c5592"
+}
+
+variable profile {
+    description = "Name of VSI profile to be used"
+    type        = string
+    default     = "bx2-2x8"
+}
+
+variable zone1 {
+    description = "Name of first zone to be used"
+    type        = string
+    default     = "eu-gb-1"
+}
 
 ##############################################################################
