@@ -148,14 +148,21 @@ resource "ibm_is_instance" "vsrx" {
   keys = [ibm_is_ssh_key.vsrx.id]
 
   primary_network_interface {
+    name = "eth0"
     subnet = "0787-e9346161-53a8-483e-8919-378469b39065"
     allow_ip_spoofing = false
   }
 
-  network_interfaces {
-    name   = "eth0"
-    subnet = "0787-e9346161-53a8-483e-8919-378469b39065"
-    allow_ip_spoofing = false
+  network_interfaces = [
+    {
+    name   = "eth1"
+    subnet = "0787-a72ca10d-f2ef-4efa-ade2-9af58e62747b"
+    allow_ip_spoofing = true
+    },
+    {
+    name   = "eth2"
+    subnet = "0787-d4f7b8cf-7161-4ae7-be84-8bd20135e4b2"
+    allow_ip_spoofing = true
     }
 
   vpc  = "r018-99ab97ed-cec9-41d6-a94d-8fa486ff6eab"
