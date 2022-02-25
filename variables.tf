@@ -19,7 +19,7 @@ variable TF_VERSION {
 variable prefix {
     description = "A unique identifier need to provision resources. Must begin with a letter"
     type        = string
-    default     = "multizone-vpc-power"
+    default     = "mvp"
 
     validation  {
       error_message = "Unique ID must begin and end with a letter and contain only letters, numbers, and - characters."
@@ -79,32 +79,42 @@ variable subnets {
   default = {
     zone-1 = [
       {
-        name           = "subnet-a"
+        name           = "zone1-mnmgt"
         cidr           = "10.10.10.0/24"
         public_gateway = true
       },
       {
-        name           = "subnet-a1"
+        name           = "zone1-pri"
         cidr           = "10.10.20.0/24"
         public_gateway = true
       },
       {
-        name           = "subnet-a3"
+        name           = "zone1-pub"
         cidr           = "10.10.30.0/24"
         public_gateway = true
       }
     ],
     zone-2 = [
       {
-        name           = "subnet-b"
+        name           = "zone2-redund"
         cidr           = "10.20.10.0/24"
         public_gateway = true
       }
     ],
     zone-3 = [
       {
-        name           = "subnet-c"
+        name           = "zone3-mgmgt"
         cidr           = "10.30.10.0/24"
+        public_gateway = true
+      },
+      {
+        name           = "zone3-pri"
+        cidr           = "10.30.20.0/24"
+        public_gateway = true
+      },
+      {
+        name           = "zone3-pub"
+        cidr           = "10.30.30.0/24"
         public_gateway = true
       }
     ]
