@@ -140,6 +140,7 @@ resource "ibm_is_instance" "vsrx" {
   name    = "vsrx-zone1"
   image   = var.image
   profile = var.profile
+  keys = ["demo-vpc-key"]
 
   primary_network_interface {
     subnet = "mvp-zone1-mnmgt"
