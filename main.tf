@@ -138,7 +138,7 @@ module subnets {
 
 resource "ibm_is_instance" "vsrx" {
   name    = "vsrx-zone1"
-  image   = "r006-fe4460a2-aa88-421a-963a-a84ffa2c5592"
+  image   = "r018-256b93dd-1733-4365-85cc-6c29ba3852ac"
   profile = "bx2-2x8"
   keys = ["demo-vpc-key"]
 
