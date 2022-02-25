@@ -142,25 +142,26 @@ resource "ibm_is_instance" "vsrx" {
   profile = var.profile
   resource_group_id = data.ibm_resource_group.resource_group.id
 
-  network_interfaces =
+  network_interfaces = [
     {
     name   = "eth0"
     subnet = keys(var.subnets)[0]
     security_groups = "triangle-authentic-paparazzi-facility"
     allow_ip_spoofing = false
     },
-  #  {
-  #  name   = "eth1"
-  #  subnet = keys(var.subnets)[1]
-  #  security_groups = "triangle-authentic-paparazzi-facility"
-  #  allow_ip_spoofing = true
-  #  },
-  #  {
-  #  name   = "eth2"
-  #  subnet = keys(var.subnets)[2]
-  #  security_groups = "triangle-authentic-paparazzi-facility"
-  #  allow_ip_spoofing = true
-  #  }
+    {
+    name   = "eth1"
+    subnet = keys(var.subnets)[1]
+    security_groups = "triangle-authentic-paparazzi-facility"
+    allow_ip_spoofing = true
+    },
+    {
+    name   = "eth2"
+    subnet = keys(var.subnets)[2]
+    security_groups = "triangle-authentic-paparazzi-facility"
+    allow_ip_spoofing = true
+    }
+  ]
 
   vpc       = "${var.prefix}-vpc"
   zone      = "${var.zone1}"

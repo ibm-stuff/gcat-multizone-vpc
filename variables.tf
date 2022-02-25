@@ -351,7 +351,7 @@ variable security_group_rules {
 # VSI Variables
 ##############################################################################
 
-variable vsi_name {
+/* variable vsi_name {
     description = "Name of VSI instance to be provisioned"
     type        = string
     default     = "vsrx"
@@ -378,6 +378,6 @@ variable zone1 {
     description = "Name of first zone to be used"
     type        = string
     default     = "eu-gb-1"
-}
+} */
 
 ##############################################################################
