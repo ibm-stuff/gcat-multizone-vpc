@@ -152,23 +152,12 @@ resource "ibm_is_instance" "vsrx" {
     allow_ip_spoofing = false
   }
 
-  network_interfaces = [
-    {
+  network_interfaces {
     name   = "eth0"
     subnet = "0787-e9346161-53a8-483e-8919-378469b39065"
     allow_ip_spoofing = false
     }
-    {
-    name   = "eth1"
-    subnet = "0787-e9346161-53a8-483e-8919-378469b39065"
-    allow_ip_spoofing = false
-    }
-    {
-    name   = "eth2"
-    subnet = "0787-e9346161-53a8-483e-8919-378469b39065"
-    allow_ip_spoofing = false
-    }
-  ]
+
   vpc  = "r018-99ab97ed-cec9-41d6-a94d-8fa486ff6eab"
   zone = "eu-gb-1"
 
