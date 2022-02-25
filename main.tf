@@ -136,7 +136,7 @@ module subnets {
 # VSIs
 ##############################################################################
 
-resource "ibm_is_instance" "vsrx" {
+/* resource "ibm_is_instance" "vsrx" {
   name = {var.vsi_name}-zone1
   image   = var.image
   profile = var.profile
@@ -165,4 +165,4 @@ resource "ibm_is_instance" "vsrx" {
 
   vpc       = "${var.prefix}-vpc"
   zone      = "${var.zone1}"
-}
+} */
